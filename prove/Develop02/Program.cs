@@ -39,7 +39,21 @@ class Program
                     string response = Console.ReadLine();
                     Console.Write("Date: ");
                     string date = DateTime.Now.ToString("yyyy-MM-dd");
-                    Entry newEntry = new Entry(randomPrompt, response,  date);
+                    
+                    Console.WriteLine("Select your mood:");
+                    Console.WriteLine("1. Happy");
+                    Console.WriteLine("2. Sad");
+                    Console.WriteLine("3. Neutral");
+                    Console.WriteLine("4. Angry");
+                    Console.WriteLine("5. Surprised");
+
+                    Console.Write("Enter the number of your mood: ");
+                    int moodChoice = int.Parse(Console.ReadLine());
+
+                    Journal.Mood mood = (Journal.Mood)(moodChoice - 1); // Convert the choice to the enum value
+
+
+                    Entry newEntry = new Entry(randomPrompt, response,  date, mood.ToString());
                     journal.AddEntry(newEntry);
                     break;
                 case 2:

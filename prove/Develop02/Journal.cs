@@ -1,7 +1,17 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 public class Journal
 {
+    // Added creativity
+    public enum Mood
+{
+    Happy,
+    Sad,
+    Neutral,
+    Angry,
+    Surprised
+}
     
     public List<Entry> _journalEntries = new List<Entry>();
 
@@ -32,6 +42,7 @@ public class Journal
                 writer.WriteLine(entry.Prompt);
                 writer.WriteLine(entry.EntryTest);
                 writer.WriteLine(entry.Date);
+                writer.WriteLine(entry.Mood);
             }
         }
     }
@@ -48,10 +59,13 @@ public class Journal
                     string prompt = line;
                     string entryTest = reader.ReadLine();
                     string date = reader.ReadLine();
-                    Entry entry = new Entry(prompt, entryTest, date);
+                    string mood = reader.ReadLine();
+                    Entry entry = new Entry(prompt, entryTest, date, mood);
                     _journalEntries.Add(entry);
                 }
             }
         }
     }
+
+    
 }
